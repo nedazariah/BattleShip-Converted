@@ -3,7 +3,13 @@ using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
+using static UtilityFunctions;
+using static GameResources;
+using static DeploymentController;
+using static DiscoveryController;
+using static EndingGameController;
+using static MenuController;
+using static HighScoreController;
 using System.Diagnostics;
 using SwinGameSDK;
 
@@ -51,7 +57,7 @@ public static class GameController
 		get { return _ai; }
 	}
 
-	public GameController()
+	static GameController()
 	{
 		//bottom state will be quitting. If player exits main menu then the game is over
 		_state.Push(GameState.Quitting);
