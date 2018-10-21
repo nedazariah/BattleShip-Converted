@@ -23,7 +23,7 @@ static class MenuController
 	private static readonly string[][] _menuStructure = {
 		new string[] {
 			"PLAY",
-			"SETUP",
+			"DIFFICULTLY",
 			"SCORES",
 			"QUIT"
 		},
@@ -42,7 +42,7 @@ static class MenuController
 	private const int MENU_TOP = 575;
 	private const int MENU_LEFT = 30;
 	private const int MENU_GAP = 0;
-	private const int BUTTON_WIDTH = 75;
+	private const int BUTTON_WIDTH = 80;
 	private const int BUTTON_HEIGHT = 15;
 	private const int BUTTON_SEP = BUTTON_WIDTH + MENU_GAP;
 
@@ -196,16 +196,25 @@ static class MenuController
 
 		btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * level;
 		int i = 0;
-		for (i = 0; i <= _menuStructure[menu].Length - 1; i++) {
-			int btnLeft = 0;
-			btnLeft = MENU_LEFT + BUTTON_SEP * (i + xOffset);
-			//SwinGame.FillRectangle(Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT)
-			SwinGame.DrawTextLines(_menuStructure[menu][i], MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
+        for (i = 0; i <= _menuStructure [menu].Length - 1; i++)
+		{
+        	int btnLeft = 0;
+			btnLeft = MENU_LEFT + BUTTON_SEP* (i + xOffset);
+            //SwinGame.FillRectangle(Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT)
+            if (IsMouseOverMenu (i, level, xOffset))
+			{
+                SwinGame.DrawTextLines (_menuStructure [menu] [i], MENU_COLOR, Color.Black, "SF Atarian System.ttf", 20, FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET - 15, btnTop + TEXT_OFFSET - 15, BUTTON_WIDTH + 35, BUTTON_HEIGHT + 20);
+            }
+			else 
+			{
+                SwinGame.DrawTextLines (_menuStructure [menu] [i], MENU_COLOR, Color.Black, GameResources.GameFont ("Menu"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
 
-			if (SwinGame.MouseDown(MouseButton.LeftButton) & IsMouseOverMenu(i, level, xOffset)) {
-				SwinGame.DrawRectangle(HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
-			}
-		}
+                if (SwinGame.MouseDown (MouseButton.LeftButton) & IsMouseOverMenu (i, level, xOffset))
+				{
+                    SwinGame.DrawRectangle (HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
+                }
+            }
+        }
 	}
 
 	/// <summary>

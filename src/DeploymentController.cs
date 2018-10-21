@@ -152,12 +152,19 @@ static class DeploymentController
 		}
 
 		if (GameController.HumanPlayer.ReadyToDeploy) {
-			SwinGame.DrawBitmap(GameResources.GameImage("PlayButton"), PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP);
-			//SwinGame.FillRectangle(Color.LightBlue, PLAY_BUTTON_LEFT, PLAY_BUTTON_TOP, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT)
-			//SwinGame.DrawText("PLAY", Color.Black, GameFont("Courier"), PLAY_BUTTON_LEFT + TEXT_OFFSET, PLAY_BUTTON_TOP)
-		}
-
-		SwinGame.DrawBitmap(GameResources.GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
+            if (SwinGame.PointInRect (SwinGame.MousePosition (), PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
+                SwinGame.DrawBitmap ("play_bigger.png", PLAY_BUTTON_LEFT - 2, TOP_BUTTONS_TOP - 2);
+            } else {
+                SwinGame.DrawBitmap (GameResources.GameImage ("PlayButton"), PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP);
+            }
+            //SwinGame.FillRectangle(Color.LightBlue, PLAY_BUTTON_LEFT, PLAY_BUTTON_TOP, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT)
+            //SwinGame.DrawText("PLAY", Color.Black, GameFont("Courier"), PLAY_BUTTON_LEFT + TEXT_OFFSET, PLAY_BUTTON_TOP)
+        }
+        if (SwinGame.PointInRect (SwinGame.MousePosition (), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
+            SwinGame.DrawBitmap ("randomizer_bigger.png", RANDOM_BUTTON_LEFT-2, TOP_BUTTONS_TOP-2);
+        } else {
+            SwinGame.DrawBitmap (GameResources.GameImage ("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
+        }
 
 		UtilityFunctions.DrawMessage();
 	}

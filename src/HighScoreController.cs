@@ -120,10 +120,23 @@ static class HighScoreController
 		const int SCORES_TOP = 80;
 		const int SCORE_GAP = 30;
 
+		SwinGame.DrawLine (Color.White, 480, 65, 609, 65);
+		SwinGame.DrawLine (Color.White, 480, 100, 609, 100);
+		SwinGame.DrawLine (Color.White, 480, 130, 609, 130);
+		SwinGame.DrawLine (Color.White, 480, 160, 609, 160);
+		SwinGame.DrawLine (Color.White, 480, 190, 609, 190);
+		SwinGame.DrawLine (Color.White, 480, 220, 609, 220);
+		SwinGame.DrawLine (Color.White, 480, 250, 609, 250);
+		SwinGame.DrawLine (Color.White, 480, 280, 609, 280);
+		SwinGame.DrawLine (Color.White, 480, 310, 609, 310);
+		SwinGame.DrawLine (Color.White, 480, 340, 609, 340);
+
+		SwinGame.DrawRectangle(Color.White, 480, 35, 130, 335);
+
 		if (_Scores.Count == 0)
 			LoadScores();
 
-		SwinGame.DrawText("   High Scores   ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
+		SwinGame.DrawText("   High Scores   ", Color.BlueViolet, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
 
 		//For all of the scores
 		int i = 0;
@@ -134,9 +147,9 @@ static class HighScoreController
 
 			//for scores 1 - 9 use 01 - 09
 			if (i < 9) {
-				SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.SkyBlue, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			} else {
-				SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.SkyBlue, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			}
 		}
 	}

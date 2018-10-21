@@ -11,9 +11,9 @@ public static class GameResources
 	private static void LoadFonts()
 	{
 		NewFont("ArialLarge", "arial.ttf", 80);
-		NewFont("Courier", "cour.ttf", 14);
+		NewFont("Courier", "gomarice_game_continue_02.ttf", 20);
 		NewFont("CourierSmall", "cour.ttf", 8);
-		NewFont("Menu", "ffaccess.ttf", 8);
+		NewFont("Menu", "SF Atarian System.ttf", 15);
 	}
 
 	private static void LoadImages()
