@@ -23,6 +23,11 @@ public enum GameState
 	ViewingGameMenu,
 
 	/// <summary>
+	/// Players are entering their name
+	/// </summary>
+	EnteringName,
+
+	/// <summary>
 	/// The player is looking at the high scores
 	/// </summary>
 	ViewingHighScores,

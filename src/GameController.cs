@@ -91,7 +91,7 @@ public static class GameController
 		_ai.PlayerGrid.Changed += GridChanged;
 		_theGame.AttackCompleted += AttackCompleted;
 
-		AddNewState(GameState.Deploying);
+		AddNewState(GameState.EnteringName);
 	}
 
 	/// <summary>
@@ -329,6 +329,9 @@ public static class GameController
 				break;
 			case GameState.ViewingHighScores:
 				HighScoreController.DrawHighScores();
+				break;
+			case GameState.EnteringName:
+				playerName.enterName ();
 				break;
 		}
 
