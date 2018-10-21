@@ -5,8 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-
-
 /// <summary>
 /// This includes a number of utility methods for
 /// drawing and interacting with the Mouse.

@@ -1,4 +1,3 @@
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
@@ -6,11 +5,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using SwinGameSDK;
-
-
-
-
-
 
 /// <summary>
 /// Controls displaying and collecting high score data.

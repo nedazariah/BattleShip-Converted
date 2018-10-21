@@ -1,13 +1,10 @@
-
-
-
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using SwinGameSDK;
 using System.Diagnostics;
+
 static class GameLogic
 {
 	public static void Main()
