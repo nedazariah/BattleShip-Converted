@@ -14,6 +14,7 @@ public static class GameResources
 		NewFont("Courier", "gomarice_game_continue_02.ttf", 20);
 		NewFont("CourierSmall", "cour.ttf", 8);
 		NewFont("Menu", "SF Atarian System.ttf", 15);
+        NewFont ("Name", "SF Atarian System.ttf", 20);
 	}
 
 	private static void LoadImages()

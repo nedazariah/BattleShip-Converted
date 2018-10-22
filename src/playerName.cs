@@ -11,11 +11,11 @@ static class playerName
 	private const int NAME_WIDTH = 10;
 	private const int NAME_HORIZONTAL = 200;
 	private const int NAME_VERTICAL = 200;
+	private static string name;
 
 	public static void enterName ()
 	{
 		int x = 0;
-		string name;
 		x = NAME_HORIZONTAL + SwinGame.TextWidth (GameResources.GameFont ("Courier"), "Name: ");
 		SwinGame.StartReadingText (Color.White, NAME_WIDTH, GameResources.GameFont ("Courier"), x, NAME_VERTICAL);
 
@@ -45,6 +45,11 @@ static class playerName
 			GameController.SwitchState (GameState.Deploying);
 			SwinGame.RefreshScreen ();
 		}
+	}
+
+	public static string getName ()
+	{
+		return name;
 	}
 }
 

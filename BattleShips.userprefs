@@ -6,9 +6,11 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="BattleShip-Converted Status">
     <Files>
-      <File FileName="src\GameController.cs" Line="93" Column="3" />
-      <File FileName="src\playerName.cs" Line="56" Column="58" />
-      <File FileName="src\GameState.cs" Line="28" Column="15" />
+      <File FileName="src\GameController.cs" Line="312" Column="35" />
+      <File FileName="src\DiscoveryController.cs" Line="72" Column="34" />
+      <File FileName="src\playerName.cs" Line="19" Column="78" />
+      <File FileName="src\HighScoreController.cs" Line="196" Column="4" />
+      <File FileName="src\EndingGameController.cs" Line="38" Column="72" />
       <File FileName="BattleShip-Converted Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
