@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using SwinGameSDK;
+using System.Text;
 
 /// <summary>
 /// Controls displaying and collecting high score data.
@@ -26,6 +27,8 @@ static class HighScoreController
 		public string Name;
 
 		public int Value;
+
+		public int Time;
 		/// <summary>
 		/// Allows scores to be compared to facilitate sorting
 		/// </summary>
@@ -61,8 +64,12 @@ static class HighScoreController
 		filename = SwinGame.PathToResource("highscores.txt");
 
 		StreamReader input = default(StreamReader);
-		input = new StreamReader(filename);
 
+		StreamReader input2 = default (StreamReader);	
+		input = new StreamReader(filename);
+		string filename2 = SwinGame.PathToResource ("time.txt");
+		input2 = new StreamReader (filename2);
+	
 		//Read in the # of scores
 		int numScores = 0;
 		numScores = Convert.ToInt32(input.ReadLine());
@@ -74,11 +81,12 @@ static class HighScoreController
 		for (i = 1; i <= numScores; i++) {
 			Score s = default(Score);
 			string line = null;
-
+			string line2 = null;
 			line = input.ReadLine();
-
+			line2 = input2.ReadLine ();
 			s.Name = line.Substring(0, NAME_WIDTH);
 			s.Value = Convert.ToInt32(line.Substring(NAME_WIDTH));
+			s.Time = Convert.ToInt32 (line2);
 			_Scores.Add(s);
 		}
 		input.Close();
@@ -144,12 +152,16 @@ static class HighScoreController
 			Score s = default(Score);
 
 			s = _Scores[i];
-
+			TimeSpan time = TimeSpan.FromSeconds (s.Time);
 			//for scores 1 - 9 use 01 - 09
 			if (i < 9) {
-				SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.SkyBlue, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (" " + (i + 1) + ":   " + s.Name, Color.SkyBlue, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (s.Value.ToString(), Color.SkyBlue, GameResources.GameFont ("Courier"), SCORES_LEFT+80, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (time.ToString(@"mm\:ss"), Color.SkyBlue, GameResources.GameFont ("Courier"), SCORES_LEFT+130, SCORES_TOP + i* SCORE_GAP);
 			} else {
-				SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.SkyBlue, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (" " + (i + 1) + ":   " + s.Name, Color.SkyBlue, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (s.Value.ToString(), Color.SkyBlue, GameResources.GameFont ("Courier"), SCORES_LEFT+80, SCORES_TOP + i* SCORE_GAP);
+				SwinGame.DrawText (time.ToString(@"mm\:ss"), Color.SkyBlue, GameResources.GameFont ("Courier"), SCORES_LEFT+130, SCORES_TOP + i* SCORE_GAP);
 			}
 		}
 	}
@@ -189,9 +201,8 @@ static class HighScoreController
 			_Scores.RemoveAt (_Scores.Count - 1);
 			_Scores.Add (s);
 			_Scores.Sort ();
-		} 
-		else 
-		{
+			SaveScores ();
+		}  else {
 			GameController.EndCurrentState ();
 		}
 	}
