@@ -35,7 +35,6 @@ static class DeploymentController
 	private static Direction _currentDirection = Direction.UpDown;
 
 	private static ShipName _selectedShip = ShipName.Tug;
-	private static Tile [] myTile = new Tile[5];
 
 	/// <summary>
 	/// Handles user input for the Deployment phase of the game.
@@ -168,11 +167,8 @@ static class DeploymentController
             SwinGame.DrawBitmap ("randomizer_bigger.png", RANDOM_BUTTON_LEFT-2, TOP_BUTTONS_TOP-2);
         } else {
             SwinGame.DrawBitmap (GameResources.GameImage ("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
-			SwinGame.DrawBitmap (GameResources.GameImage ("Clear"), 600, TOP_BUTTONS_TOP);
+			SwinGame.DrawBitmap (GameResources.GameImage ("Place"), 600, TOP_BUTTONS_TOP);
         }
-
-		/*if (SwinGame.PointInRect (SwinGame.MousePosition (), 600, TOP_BUTTONS_TOP, 70, TOP_BUTTONS_HEIGHT)) {
-			SwinGame.DrawBitmap (GameResources.GameImage ("Clear"), 600, TOP_BUTTONS_TOP);}*/
 
 		UtilityFunctions.DrawMessage();
 	}
