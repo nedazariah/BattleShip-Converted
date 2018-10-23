@@ -21,6 +21,7 @@ public static class GameController
 	private static Stack<GameState> _state = new Stack<GameState>();
 
 	private static AIOption _aiSetting;
+	public static int ShLeft = 10;
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
@@ -162,7 +163,7 @@ public static class GameController
 			case ResultOfAttack.Destroyed:
 				PlayHitSequence(result.Row, result.Column, isHuman);
 				Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
-
+				ShLeft--;
 				break;
 			case ResultOfAttack.GameOver:
 				PlayHitSequence(result.Row, result.Column, isHuman);
