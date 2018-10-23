@@ -128,23 +128,23 @@ static class HighScoreController
 		const int SCORES_TOP = 80;
 		const int SCORE_GAP = 30;
 
-		SwinGame.DrawLine (Color.White, 480, 65, 609, 65);
-		SwinGame.DrawLine (Color.White, 480, 100, 609, 100);
-		SwinGame.DrawLine (Color.White, 480, 130, 609, 130);
-		SwinGame.DrawLine (Color.White, 480, 160, 609, 160);
-		SwinGame.DrawLine (Color.White, 480, 190, 609, 190);
-		SwinGame.DrawLine (Color.White, 480, 220, 609, 220);
-		SwinGame.DrawLine (Color.White, 480, 250, 609, 250);
-		SwinGame.DrawLine (Color.White, 480, 280, 609, 280);
-		SwinGame.DrawLine (Color.White, 480, 310, 609, 310);
-		SwinGame.DrawLine (Color.White, 480, 340, 609, 340);
+		SwinGame.DrawLine (Color.White, 480, 65, 659, 65);
+		SwinGame.DrawLine (Color.White, 480, 100, 659, 100);
+		SwinGame.DrawLine (Color.White, 480, 130, 659, 130);
+		SwinGame.DrawLine (Color.White, 480, 160, 659, 160);
+		SwinGame.DrawLine (Color.White, 480, 190, 659, 190);
+		SwinGame.DrawLine (Color.White, 480, 220, 659, 220);
+		SwinGame.DrawLine (Color.White, 480, 250, 659, 250);
+		SwinGame.DrawLine (Color.White, 480, 280, 659, 280);
+		SwinGame.DrawLine (Color.White, 480, 310, 659, 310);
+		SwinGame.DrawLine (Color.White, 480, 340, 659, 340);
 
-		SwinGame.DrawRectangle(Color.White, 480, 35, 130, 335);
+		SwinGame.DrawRectangle(Color.White, 480, 35, 180, 335);
 
 		if (_Scores.Count == 0)
 			LoadScores();
 
-		SwinGame.DrawText("   High Scores   ", Color.BlueViolet, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
+		SwinGame.DrawText("   High Scores   ", Color.BlueViolet, GameResources.GameFont("Courier"), 515, SCORES_HEADING);
 
 		//For all of the scores
 		int i = 0;

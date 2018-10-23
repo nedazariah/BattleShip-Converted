@@ -10,7 +10,7 @@ public static class GameResources
 
 	private static void LoadFonts()
 	{
-		NewFont("ArialLarge", "arial.ttf", 80);
+		NewFont("ArialLarge", "GALSTB.ttf", 100);
 		NewFont("Courier", "gomarice_game_continue_02.ttf", 20);
 		NewFont("CourierSmall", "cour.ttf", 8);
 		NewFont("Menu", "SF Atarian System.ttf", 15);
@@ -23,6 +23,8 @@ public static class GameResources
 		NewImage("Menu", "main_page.jpg");
 		NewImage("Discovery", "discover.jpg");
 		NewImage("Deploy", "deploy.jpg");
+		NewImage ("Welcome", "welcome.png");
+		NewImage ("AAA", "aaa.png");
 
 		//Deployment
 		NewImage("LeftRightButton", "deploy_dir_button_horiz.png");
@@ -30,6 +32,7 @@ public static class GameResources
 		NewImage("SelectedShip", "deploy_button_hl.png");
 		NewImage("PlayButton", "deploy_play_button.png");
 		NewImage("RandomButton", "deploy_randomize_button.png");
+		NewImage ("Clear", "Clear.png");
 
 		//Ships
 		int i = 0;
