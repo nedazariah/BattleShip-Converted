@@ -21,6 +21,17 @@ static class GameLogic
 		do {
 			GameController.HandleUserInput();
 			GameController.DrawScreen();
+
+			if (SwinGame.KeyTyped (KeyCode.vk_n)) {
+				SwinGame.StopMusic ();
+			}
+			if (SwinGame.KeyTyped (KeyCode.vk_m)) {
+				SwinGame.PlayMusic (GameResources.GameMusic ("Background"));
+			}
+			if (SwinGame.KeyTyped (KeyCode.vk_l)) {
+				SwinGame.PlayMusic (GameResources.GameMusic ("Background2"));
+			}
+
 		} while (!(SwinGame.WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting));
 
 		SwinGame.StopMusic();
