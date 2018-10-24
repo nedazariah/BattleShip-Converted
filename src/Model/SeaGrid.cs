@@ -108,6 +108,11 @@ public class SeaGrid : ISeaGrid
 		AddShip(row, col, direction, newShip);
 	}
 
+	public void RemoveShip (int row, int col, ShipName ship, Direction direction)
+	{
+		Ship newShip = _Ships [ship];
+		newShip.Remove ();
+	}
 	/// <summary>
 	/// AddShip add a ship to the SeaGrid
 	/// </summary>
