@@ -65,6 +65,7 @@ public static class GameResources
         NewMusic ("Background2", "ghaidermix.mp3");
 	}
 
+
 	/// <summary>
 	/// Gets a Font Loaded in the Resources
 	/// </summary>

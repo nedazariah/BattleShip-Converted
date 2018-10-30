@@ -31,6 +31,13 @@ static class GameLogic
 			if (SwinGame.KeyTyped (KeyCode.vk_l)) {
 				SwinGame.PlayMusic (GameResources.GameMusic ("Background2"));
 			}
+			if (SwinGame.KeyTyped (KeyCode.vk_f)) {
+				var myBit = SwinGame.LoadBitmap ("bitmap.jpg");
+				SwinGame.DrawBitmap ("bitmap.jpg", 20, 20);
+				SwinGame.RefreshScreen ();
+				SwinGame.Delay (10000);
+			}
+
 
 		} while (!(SwinGame.WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting));
 

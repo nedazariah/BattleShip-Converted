@@ -28,7 +28,8 @@ static class MenuController
 			"QUIT",
 			"STOP MUSIC 'n'",
 			"MUSIC 1 'm'",
-			"MUSIC 2 'l'"
+			"MUSIC 2 'l'",
+			"Instructions 'f'"
 		},
 		new string[] {
 			"RETURN",
@@ -36,7 +37,8 @@ static class MenuController
 			"QUIT",
 			"STOP MUSIC 'n'",
 			"MUSIC 1 'm'",
-			"MUSIC 2 'l'"
+			"MUSIC 2 'l'",
+			"INSTRUCTIONS 'f'"
 		},
 		new string[] {
 			"EASY",
