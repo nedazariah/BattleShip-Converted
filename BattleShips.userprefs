@@ -6,20 +6,25 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="BattleShip-Converted Status">
     <Files>
-      <File FileName="src\DeploymentController.cs" Line="171" Column="10" />
-      <File FileName="src\Model\Player.cs" Line="231" Column="4" />
-      <File FileName="src\GameResources.cs" Line="67" Column="2" />
-      <File FileName="src\GameLogic.cs" Line="36" Column="46" />
-      <File FileName="src\GameController.cs" Line="1" Column="1" />
-      <File FileName="src\MenuController.cs" Line="49" Column="2" />
-      <File FileName="src\Model\SeaGrid.cs" Line="1" Column="1" />
-      <File FileName="src\Model\TileView.cs" Line="1" Column="1" />
-      <File FileName="src\Model\Tile.cs" Line="1" Column="1" />
-      <File FileName="src\Model\BattleShipsGame.cs" Line="1" Column="1" />
-      <File FileName="src\GameState.cs" Line="1" Column="1" />
-      <File FileName="src\HighScoreController.cs" Line="1" Column="1" />
+      <File FileName="src\DiscoveryController.cs" Line="23" Column="28" />
+      <File FileName="src\HighScoreController.cs" Line="175" Column="91" />
+      <File FileName="src\GameController.cs" Line="373" Column="15" />
+      <File FileName="src\DeploymentController.cs" Line="51" Column="32" />
       <File FileName="BattleShip-Converted Status" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BattleShips" expanded="True">
+            <Node name="BattleShips" expanded="True">
+              <Node name="src" expanded="True">
+                <Node name="DiscoveryController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.BattleShips PreferredExecutionTarget="MonoDevelop.Default" />

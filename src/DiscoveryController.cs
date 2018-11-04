@@ -20,6 +20,10 @@ static class DiscoveryController
 	/// </remarks>
 	public static void HandleDiscoveryInput()
 	{
+		if(SwinGame.KeyTyped(KeyCode.vk_F1))
+		{
+			GameController.FullScreen();
+		}
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.AddNewState(GameState.ViewingGameMenu);
 		}

@@ -379,6 +379,11 @@ public static class GameController
 		_aiSetting = setting;
 	}
 
+	public static void FullScreen()
+	{
+		SwinGame.ToggleFullScreen();
+	}
+
 }
 
 //=======================================================
