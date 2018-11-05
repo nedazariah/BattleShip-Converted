@@ -17,13 +17,13 @@ static class playerName
 	{
 		int x = 0;
 		x = NAME_HORIZONTAL + SwinGame.TextWidth (GameResources.GameFont ("Courier"), "Name: ");
-		SwinGame.StartReadingText (Color.Black, NAME_WIDTH, GameResources.GameFont ("Courier"), x, NAME_VERTICAL);
+		SwinGame.StartReadingText (Color.White, NAME_WIDTH, GameResources.GameFont ("Courier"), x, NAME_VERTICAL);
 
 		//Read the text from the user
 		while (SwinGame.ReadingText ()) {
 			SwinGame.ProcessEvents ();
 			UtilityFunctions.DrawBackground ();
-			SwinGame.DrawText ("Name: ", Color.Black, GameResources.GameFont ("Courier"), NAME_HORIZONTAL, NAME_VERTICAL);
+			SwinGame.DrawText ("Name: ", Color.White, GameResources.GameFont ("Courier"), NAME_HORIZONTAL, NAME_VERTICAL);
 			SwinGame.RefreshScreen ();
 		}
 

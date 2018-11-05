@@ -28,7 +28,7 @@ static class HighScoreController
 
 		public int Value;
 
-		public int Time;
+		public uint Time;
 		/// <summary>
 		/// Allows scores to be compared to facilitate sorting
 		/// </summary>
@@ -86,7 +86,7 @@ static class HighScoreController
 			line2 = input2.ReadLine ();
 			s.Name = line.Substring(0, NAME_WIDTH);
 			s.Value = Convert.ToInt32(line.Substring(NAME_WIDTH));
-			s.Time = Convert.ToInt32 (line2);
+			s.Time = Convert.ToUInt32 (line2);
 			_Scores.Add(s);
 		}
 		input.Close();
@@ -113,12 +113,25 @@ static class HighScoreController
 		output.WriteLine(_Scores.Count);
 
 		foreach (Score s in _Scores) {
-			output.WriteLine(s.Name + s.Value);
+				output.WriteLine (s.Name + s.Value);
 		}
 
 		output.Close();
 	}
+	public static void SaveTime ()
+	{
+		string filename = null;
+		filename = SwinGame.PathToResource("time.txt");
+			StreamWriter output = default (StreamWriter);
+		output = new StreamWriter (filename);
 
+
+		foreach (Score s in _Scores) {
+			output.WriteLine(s.Time);
+		}
+
+		output.Close();
+	}
 	/// <summary>
 	/// Draws the high scores to the screen.
 	/// </summary>
@@ -128,23 +141,23 @@ static class HighScoreController
 		const int SCORES_TOP = 80;
 		const int SCORE_GAP = 30;
 
-		SwinGame.DrawLine (Color.White, 480, 65, 659, 65);
-		SwinGame.DrawLine (Color.White, 480, 100, 659, 100);
-		SwinGame.DrawLine (Color.White, 480, 130, 659, 130);
-		SwinGame.DrawLine (Color.White, 480, 160, 659, 160);
-		SwinGame.DrawLine (Color.White, 480, 190, 659, 190);
-		SwinGame.DrawLine (Color.White, 480, 220, 659, 220);
-		SwinGame.DrawLine (Color.White, 480, 250, 659, 250);
-		SwinGame.DrawLine (Color.White, 480, 280, 659, 280);
-		SwinGame.DrawLine (Color.White, 480, 310, 659, 310);
-		SwinGame.DrawLine (Color.White, 480, 340, 659, 340);
+		SwinGame.DrawLine (Color.White, 480, 65, 609, 65);
+		SwinGame.DrawLine (Color.White, 480, 100, 609, 100);
+		SwinGame.DrawLine (Color.White, 480, 130, 609, 130);
+		SwinGame.DrawLine (Color.White, 480, 160, 609, 160);
+		SwinGame.DrawLine (Color.White, 480, 190, 609, 190);
+		SwinGame.DrawLine (Color.White, 480, 220, 609, 220);
+		SwinGame.DrawLine (Color.White, 480, 250, 609, 250);
+		SwinGame.DrawLine (Color.White, 480, 280, 609, 280);
+		SwinGame.DrawLine (Color.White, 480, 310, 609, 310);
+		SwinGame.DrawLine (Color.White, 480, 340, 609, 340);
 
-		SwinGame.DrawRectangle(Color.White, 480, 35, 180, 335);
+		SwinGame.DrawRectangle(Color.White, 480, 35, 130, 335);
 
 		if (_Scores.Count == 0)
 			LoadScores();
 
-		SwinGame.DrawText("   High Scores   ", Color.BlueViolet, GameResources.GameFont("Courier"), 515, SCORES_HEADING);
+		SwinGame.DrawText("   High Scores   ", Color.BlueViolet, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
 
 		//For all of the scores
 		int i = 0;
@@ -172,7 +185,7 @@ static class HighScoreController
 	/// <remarks></remarks>
 	public static void HandleHighScoreInput()
 	{
-		if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.vk_F1) || SwinGame.KeyTyped(KeyCode.vk_ESCAPE) || SwinGame.KeyTyped(KeyCode.vk_RETURN)) {
+		if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.vk_ESCAPE) || SwinGame.KeyTyped(KeyCode.vk_RETURN)) {
 			GameController.EndCurrentState();
 		}
 	}
@@ -184,7 +197,7 @@ static class HighScoreController
 	/// <remarks>
 	/// This verifies if the score is a highsSwinGame.
 	/// </remarks>
-	public static void ReadHighScore(int value)
+	public static void ReadHighScore(int value,uint time)
 	{
 		//const int ENTRY_TOP = 500;
 
@@ -196,12 +209,21 @@ static class HighScoreController
 			GameController.SwitchState (GameState.ViewingHighScores);
 			Score s = new Score ();
 			s.Value = value;
-			s.Name = playerName.getName ();
+			if (playerName.getName ().Length == 3) {
 
+				s.Name = playerName.getName ();
+			} else if (playerName.getName ().Length == 2) {
+				s.Name = playerName.getName () +" ";
+			}
+			else if (playerName.getName ().Length == 1) {
+				s.Name = playerName.getName () +"  ";
+			}
+			s.Time = time;
 			_Scores.RemoveAt (_Scores.Count - 1);
 			_Scores.Add (s);
 			_Scores.Sort ();
 			SaveScores ();
+			SaveTime ();
 		}  else {
 			GameController.EndCurrentState ();
 		}

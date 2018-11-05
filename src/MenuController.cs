@@ -25,20 +25,12 @@ static class MenuController
 			"PLAY",
 			"DIFFICULTLY",
 			"SCORES",
-			"QUIT",
-			"STOP MUSIC 'n'",
-			"MUSIC 1 'm'",
-			"MUSIC 2 'l'",
-			"Instructions 'f'"
+			"QUIT"
 		},
 		new string[] {
 			"RETURN",
 			"SURRENDER",
-			"QUIT",
-			"STOP MUSIC 'n'",
-			"MUSIC 1 'm'",
-			"MUSIC 2 'l'",
-			"INSTRUCTIONS 'f'"
+			"QUIT"
 		},
 		new string[] {
 			"EASY",
