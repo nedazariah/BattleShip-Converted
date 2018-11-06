@@ -90,6 +90,7 @@ static class HighScoreController
 			_Scores.Add(s);
 		}
 		input.Close();
+		input2.Close ();
 	}
 
 	/// <summary>
@@ -105,11 +106,13 @@ static class HighScoreController
 	private static void SaveScores()
 	{
 		string filename = null;
+		///string filename1 = null;
 		filename = SwinGame.PathToResource("highscores.txt");
-
+		///filename = SwinGame.PathToResource("time.txt");
 		StreamWriter output = default(StreamWriter);
+		///StreamWriter output1 = default (StreamWriter);
 		output = new StreamWriter(filename);
-
+		///output1 = new StreamWriter (filename1);
 		output.WriteLine(_Scores.Count);
 
 		foreach (Score s in _Scores) {
@@ -117,6 +120,7 @@ static class HighScoreController
 		}
 
 		output.Close();
+		SaveTime ();
 
 	}
 	public static void SaveTime ()
