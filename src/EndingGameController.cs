@@ -22,9 +22,9 @@ static class EndingGameController
 		UtilityFunctions.DrawSmallField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer);
 
 		if (GameController.HumanPlayer.IsDestroyed) {
-			SwinGame.DrawTextLines("YOU LOSE!", Color.Red, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+			SwinGame.DrawTextLines("YOU LOSE :(", Color.Red, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 		} else {
-			SwinGame.DrawTextLines("-- WINNER --", Color.LightGoldenrodYellow, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+			SwinGame.DrawTextLines("!!!WINNER!!!", Color.Goldenrod, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 200, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 		}
 	}
 
@@ -32,10 +32,10 @@ static class EndingGameController
 	/// Handle the input during the end of the game. Any interaction
 	/// will result in it reading in the highsSwinGame.
 	/// </summary>
-	public static void HandleEndOfGameInput(uint time)
+	public static void HandleEndOfGameInput()
 	{
 		if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.vk_RETURN) || SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
-			HighScoreController.ReadHighScore(GameController.HumanPlayer.Score,time);
+			HighScoreController.ReadHighScore(GameController.HumanPlayer.Score);
 		}
 	}
 

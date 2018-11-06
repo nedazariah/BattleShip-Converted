@@ -20,6 +20,10 @@ static class DiscoveryController
 	/// </remarks>
 	public static void HandleDiscoveryInput()
 	{
+		if(SwinGame.KeyTyped(KeyCode.vk_F1))
+		{
+			GameController.FullScreen();
+		}
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.AddNewState(GameState.ViewingGameMenu);
 		}
@@ -54,12 +58,13 @@ static class DiscoveryController
 	/// <summary>
 	/// Draws the game during the attack phase.
 	/// </summary>s
-	public static void DrawDiscovery(uint time)
+	public static void DrawDiscovery()
 	{
 		const int SCORES_LEFT = 172;
 		const int SHOTS_TOP = 157;
 		const int HITS_TOP = 206;
 		const int SPLASH_TOP = 256;
+		const int SLEFT_TOP = 306;
 
 		if ((SwinGame.KeyDown(KeyCode.vk_LSHIFT) | SwinGame.KeyDown(KeyCode.vk_RSHIFT)) & SwinGame.KeyDown(KeyCode.vk_c)) {
            	UtilityFunctions.DrawField(GameController.HumanPlayer.EnemyGrid, GameController.ComputerPlayer, true);
@@ -70,12 +75,12 @@ static class DiscoveryController
 		UtilityFunctions.DrawField(GameController.ComputerPlayer.PlayerGrid, GameController.ComputerPlayer, true);
 		UtilityFunctions.DrawSmallField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer);
 		UtilityFunctions.DrawMessage();
-		TimeSpan timetick = TimeSpan.FromSeconds (time);
+
 		SwinGame.DrawText (playerName.getName(),Color.White, GameResources.GameFont ("Name"), SCORES_LEFT, 95);
 		SwinGame.DrawText(GameController.HumanPlayer.Shots.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SHOTS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Hits.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
-		SwinGame.DrawText(timetick.ToString(@"mm\:ss"), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP+20);
+		SwinGame.DrawText ("Total Ships Left:  "+GameController.ShLeft.ToString(),Color.White, GameResources.GameFont ("Menu"), 100, SLEFT_TOP);
 	}
 
 }

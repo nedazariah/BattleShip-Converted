@@ -35,6 +35,7 @@ static class DeploymentController
 	private static Direction _currentDirection = Direction.UpDown;
 
 	private static ShipName _selectedShip = ShipName.Tug;
+
 	/// <summary>
 	/// Handles user input for the Deployment phase of the game.
 	/// </summary>
@@ -45,6 +46,10 @@ static class DeploymentController
 	/// </remarks>
 	public static void HandleDeploymentInput()
 	{
+		if (SwinGame.KeyTyped(KeyCode.vk_F1))
+		{
+			GameController.FullScreen();
+		}
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.AddNewState(GameState.ViewingGameMenu);
 		}
@@ -69,14 +74,20 @@ static class DeploymentController
 				DoDeployClick();
 			}
 
-			if (GameController.HumanPlayer.ReadyToDeploy & UtilityFunctions.IsMouseInRectangle(PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				GameController.EndDeployment();
-			} else if (UtilityFunctions.IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
+			if (GameController.HumanPlayer.ReadyToDeploy & UtilityFunctions.IsMouseInRectangle (PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
+				GameController.EndDeployment ();
+			} else if (UtilityFunctions.IsMouseInRectangle (UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
 				_currentDirection = Direction.UpDown;
-			} else if (UtilityFunctions.IsMouseInRectangle(LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
+			} else if (UtilityFunctions.IsMouseInRectangle (LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
 				_currentDirection = Direction.LeftRight;
-			} else if (UtilityFunctions.IsMouseInRectangle(RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				GameController.HumanPlayer.RandomizeDeployment();
+			} else if (UtilityFunctions.IsMouseInRectangle (RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
+				GameController.HumanPlayer.RandomizeDeployment ();
+			} else if (UtilityFunctions.IsMouseInRectangle (600, TOP_BUTTONS_TOP, 70, TOP_BUTTONS_HEIGHT)) {
+				GameController.HumanPlayer.RemoveShip (0, 0, ShipName.AircraftCarrier, Direction.LeftRight);
+				GameController.HumanPlayer.RemoveShip (0, 0, ShipName.Battleship, Direction.LeftRight);
+				GameController.HumanPlayer.RemoveShip (0, 0, ShipName.Destroyer, Direction.LeftRight);
+				GameController.HumanPlayer.RemoveShip (0, 0, ShipName.Submarine, Direction.LeftRight);
+				GameController.HumanPlayer.RemoveShip (0, 0, ShipName.Tug, Direction.LeftRight);
 			}
 		}
 	}
@@ -164,6 +175,7 @@ static class DeploymentController
             SwinGame.DrawBitmap ("randomizer_bigger.png", RANDOM_BUTTON_LEFT-2, TOP_BUTTONS_TOP-2);
         } else {
             SwinGame.DrawBitmap (GameResources.GameImage ("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
+			SwinGame.DrawBitmap (GameResources.GameImage ("Clear"), 600, TOP_BUTTONS_TOP);
         }
 
 		UtilityFunctions.DrawMessage();

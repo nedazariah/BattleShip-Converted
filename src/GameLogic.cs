@@ -16,17 +16,29 @@ static class GameLogic
 		GameResources.LoadResources();
 
 		SwinGame.PlayMusic(GameResources.GameMusic("Background"));
-		Timer a = SwinGame.CreateTimer ();
-		SwinGame.StartTimer (a);
+
 		//Game Loop
 		do {
-			uint time = SwinGame.TimerTicks (a) / 1000;
-			GameController.time = time;
-			GameController.HandleUserInput(time);
-
+			GameController.HandleUserInput();
 			GameController.DrawScreen();
-			if (GameController.CurrentState == GameState.Quitting)
-				SwinGame.StopTimer (a);
+
+			if (SwinGame.KeyTyped (KeyCode.vk_n)) {
+				SwinGame.StopMusic ();
+			}
+			if (SwinGame.KeyTyped (KeyCode.vk_m)) {
+				SwinGame.PlayMusic (GameResources.GameMusic ("Background"));
+			}
+			if (SwinGame.KeyTyped (KeyCode.vk_l)) {
+				SwinGame.PlayMusic (GameResources.GameMusic ("Background2"));
+			}
+			if (SwinGame.KeyTyped (KeyCode.vk_f)) {
+				var myBit = SwinGame.LoadBitmap ("bitmap.jpg");
+				SwinGame.DrawBitmap ("bitmap.jpg", 20, 20);
+				SwinGame.RefreshScreen ();
+				SwinGame.Delay (10000);
+			}
+
+
 		} while (!(SwinGame.WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting));
 
 		SwinGame.StopMusic();

@@ -19,8 +19,9 @@ public static class GameController
 	private static AIPlayer _ai;
 
 	private static Stack<GameState> _state = new Stack<GameState>();
-	public static uint time;
+
 	private static AIOption _aiSetting;
+	public static int ShLeft = 10;
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
@@ -162,7 +163,7 @@ public static class GameController
 			case ResultOfAttack.Destroyed:
 				PlayHitSequence(result.Row, result.Column, isHuman);
 				Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
-
+				ShLeft--;
 				break;
 			case ResultOfAttack.GameOver:
 				PlayHitSequence(result.Row, result.Column, isHuman);
@@ -266,7 +267,7 @@ public static class GameController
 	/// actions for the game to perform. The actions
 	/// performed depend upon the state of the game.
 	/// </remarks>
-	public static void HandleUserInput(uint time)
+	public static void HandleUserInput()
 	{
 		//Read incoming input events
 		SwinGame.ProcessEvents();
@@ -288,7 +289,7 @@ public static class GameController
 				DiscoveryController.HandleDiscoveryInput();
 				break;
 			case GameState.EndingGame:
-				EndingGameController.HandleEndOfGameInput(time);
+				EndingGameController.HandleEndOfGameInput();
 				break;
 			case GameState.ViewingHighScores:
 				HighScoreController.HandleHighScoreInput();
@@ -322,7 +323,7 @@ public static class GameController
 				DeploymentController.DrawDeployment();
 				break;
 			case GameState.Discovering:
-				DiscoveryController.DrawDiscovery(time);
+				DiscoveryController.DrawDiscovery();
 				break;
 			case GameState.EndingGame:
 				EndingGameController.DrawEndOfGame();
@@ -376,6 +377,11 @@ public static class GameController
 	public static void SetDifficulty(AIOption setting)
 	{
 		_aiSetting = setting;
+	}
+
+	public static void FullScreen()
+	{
+		SwinGame.ToggleFullScreen();
 	}
 
 }
