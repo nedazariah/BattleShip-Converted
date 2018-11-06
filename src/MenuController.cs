@@ -25,7 +25,7 @@ static class MenuController
 			"PLAY",
 			"DIFFICULTLY",
 			"SCORES",
-			"QUIT",
+			"QUIT 'q'",
 			"STOP MUSIC 'n'",
 			"MUSIC 1 'm'",
 			"MUSIC 2 'l'",
@@ -34,7 +34,7 @@ static class MenuController
 		new string[] {
 			"RETURN",
 			"SURRENDER",
-			"QUIT",
+			"QUIT 'q'",
 			"STOP MUSIC 'n'",
 			"MUSIC 1 'm'",
 			"MUSIC 2 'l'",
@@ -330,7 +330,11 @@ static class MenuController
 				//end game
 				break;
 			case GAME_MENU_QUIT_BUTTON:
-				GameController.AddNewState(GameState.Quitting);
+				//GameController.AddNewState(GameState.Quitting);
+				var myBit = SwinGame.LoadBitmap ("ExitConfirmation.png");
+				SwinGame.DrawBitmap ("ExitConfirmation.png", 160, 150);
+				SwinGame.RefreshScreen ();
+				SwinGame.Delay (5000);
 				break;
 		}
 	}

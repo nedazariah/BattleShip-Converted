@@ -28,6 +28,17 @@ static class GameLogic
 
 			GameController.DrawScreen();
 
+
+			if (SwinGame.KeyTyped (KeyCode.vk_q)) {
+				var myBit = SwinGame.LoadBitmap ("ExitConfirmation.png");
+				SwinGame.DrawBitmap ("ExitConfirmation.png", 160, 150);
+				SwinGame.RefreshScreen ();
+				SwinGame.Delay (5000);
+			}
+
+			if (SwinGame.KeyTyped (KeyCode.vk_y))
+				GameController.AddNewState(GameState.Quitting);
+
 			if (SwinGame.KeyTyped (KeyCode.vk_n)) {
 				SwinGame.StopMusic ();
 			}
