@@ -16,10 +16,16 @@ static class GameLogic
 		GameResources.LoadResources();
 
 		SwinGame.PlayMusic(GameResources.GameMusic("Background"));
-
+		Timer a = SwinGame.CreateTimer ();
+		SwinGame.StartTimer (a);
 		//Game Loop
 		do {
+			uint time = SwinGame.TimerTicks (a) / 1000;
+			GameController.time = time;
+			if (GameController.CurrentState == GameState.Quitting)
+				SwinGame.StopTimer (a);
 			GameController.HandleUserInput();
+
 			GameController.DrawScreen();
 
 			if (SwinGame.KeyTyped (KeyCode.vk_n)) {

@@ -22,6 +22,7 @@ public static class GameController
 
 	private static AIOption _aiSetting;
 	public static int ShLeft = 10;
+	public static uint time;
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
@@ -289,7 +290,7 @@ public static class GameController
 				DiscoveryController.HandleDiscoveryInput();
 				break;
 			case GameState.EndingGame:
-				EndingGameController.HandleEndOfGameInput();
+				EndingGameController.HandleEndOfGameInput(time);
 				break;
 			case GameState.ViewingHighScores:
 				HighScoreController.HandleHighScoreInput();
@@ -323,7 +324,7 @@ public static class GameController
 				DeploymentController.DrawDeployment();
 				break;
 			case GameState.Discovering:
-				DiscoveryController.DrawDiscovery();
+				DiscoveryController.DrawDiscovery(time);
 				break;
 			case GameState.EndingGame:
 				EndingGameController.DrawEndOfGame();

@@ -28,7 +28,7 @@ static class HighScoreController
 
 		public int Value;
 
-		public int Time;
+		public uint Time;
 		/// <summary>
 		/// Allows scores to be compared to facilitate sorting
 		/// </summary>
@@ -86,7 +86,7 @@ static class HighScoreController
 			line2 = input2.ReadLine ();
 			s.Name = line.Substring(0, NAME_WIDTH);
 			s.Value = Convert.ToInt32(line.Substring(NAME_WIDTH));
-			s.Time = Convert.ToInt32 (line2);
+			s.Time = Convert.ToUInt32 (line2);
 			_Scores.Add(s);
 		}
 		input.Close();
@@ -117,8 +117,21 @@ static class HighScoreController
 		}
 
 		output.Close();
-	}
 
+	}
+	public static void SaveTime ()
+	{
+		string filename = null;
+		filename = SwinGame.PathToResource ("time.txt");
+		StreamWriter output = default (StreamWriter);
+		output = new StreamWriter (filename);
+
+		output.WriteLine(_Scores.Count);
+		foreach (Score s in _Scores) {
+			output.WriteLine (s.Time);
+		}
+
+		output.Close ();	}
 	/// <summary>
 	/// Draws the high scores to the screen.
 	/// </summary>
@@ -184,28 +197,34 @@ static class HighScoreController
 	/// <remarks>
 	/// This verifies if the score is a highsSwinGame.
 	/// </remarks>
-	public static void ReadHighScore(int value)
+	public static void ReadHighScore (int value, uint time)
 	{
 		//const int ENTRY_TOP = 500;
 
 		if (_Scores.Count == 0)
-			LoadScores();
+			LoadScores ();
 
 		//is it a high score
 		if (value > _Scores [_Scores.Count - 1].Value) {
 			GameController.SwitchState (GameState.ViewingHighScores);
 			Score s = new Score ();
 			s.Value = value;
-			s.Name = playerName.getName ();
-
+			if (playerName.getName ().Length == 3) {
+				s.Name = playerName.getName ();
+			} else if (playerName.getName ().Length == 2) {
+				s.Name = playerName.getName () + " ";
+			} else if (playerName.getName ().Length == 1) {
+				s.Name = playerName.getName () + "  ";
+			}
+			s.Time = time;
 			_Scores.RemoveAt (_Scores.Count - 1);
 			_Scores.Add (s);
 			_Scores.Sort ();
 			SaveScores ();
-		}  else {
+            
+		} else {
 			GameController.EndCurrentState ();
-		}
-	}
+		}	}
 }
 
 //=======================================================
