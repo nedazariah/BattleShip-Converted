@@ -25,6 +25,7 @@ public static class GameResources
 		NewImage("Deploy", "deploy.jpg");
 		NewImage ("Welcome", "welcome.png");
 		NewImage ("AAA", "aaa.png");
+		NewImage ("Gameover", "gameOver.png");
 
 		//Deployment
 		NewImage("LeftRightButton", "deploy_dir_button_horiz.png");
